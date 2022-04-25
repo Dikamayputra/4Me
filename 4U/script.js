@@ -7,7 +7,7 @@ let sender;
 if (url.searchParams.get('by') != null) {
   sender = url.searchParams.get('by');
 } else {
-  sender = "Dika";
+  sender = "Bayu";
 }
 
 let footer = document.getElementById("credit");
@@ -15,14 +15,31 @@ footer.innerHTML = sender;
 footer.href = "https://www.instagram.com/adamukti/";
 
 document.querySelector(".tombol").addEventListener('click', function () {
-  Swal.fire("Hallo Adekk", "Aku ada pertanyaan nih buat kamu?", "question").then(function () {
-    Swal.fire("Jawab yang jujur ya!").then(function () {
-      Swal.fire("Awas aja kalo boong!!", "", "error").then(function () {
+  Swal.fire("Hallo ?", "", "question").then(function () {
+    Swal.fire({
+      title: "Selamat Ulang Tahun Yaa..",
+      imageUrl: "https://c.tenor.com/i-EiA87Hy4QAAAAM/kiss-day.gif",
+      imageWidth: 550,
+      imageHeight: 225}).then(function () {
+      Swal.fire({
+      title: "Kamu Mau Hadiah?",
+      imageUrl: "https://c.tenor.com/8b7jfGD9lb8AAAAC/happy-birthday-birthday-cake.gif",
+      imageWidth: 550,
+      imageHeight: 225,
+      showCancelButton: true,
+          inputValidator: (value) => {
+            if (!value) {
+              return 'Isi dulu dong beb'
+            } else {
+              nama = value;
+            }
+          }
+      }).then(function () {
 
         const {
           value: name
         } = Swal.fire({
-          title: 'Masukin dulu nama adekk',
+          title: 'Tulis Dulu Nama Kamu',
           input: 'text',
           inputLabel: '',
           showCancelButton: true,
@@ -35,17 +52,22 @@ document.querySelector(".tombol").addEventListener('click', function () {
           }
         }).then(function () {
           const pertanyaan = Swal.fire({
-            title: `${nama} sayang ga sama ${sender}?`,
+            title: `${nama} Kamu Beneran Mau Hadiah Dari ${sender}?`,
             showDenyButton: true,
             showCancelButton: false,
-            confirmButtonText: `Sayang`,
-            denyButtonText: `Gak`,
+            confirmButtonText: `Maulah massa engak`,
+            denyButtonText: `Gak mau`,
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-              Swal.fire(`${sender} juga sayang banget sama ${nama}`).then(function () {
+              Swal.fire({
+                title: "Hehe..Untung aja kamu mau",
+                imageUrl: "https://c.tenor.com/hoqpixeb0pMAAAAC/bear-blow-a-kiss.gif",
+                imageWidth: 550,
+                imageHeight: 225
+              }).then(function () {
                 Swal.fire({
-                  title: 'Seberapa sayang emangnya?',
+                  title: 'Kalo boleh tau seberapa pengen sihh?',
                   icon: 'question',
                   input: 'range',
                   inputLabel: 'Antara 1 - 100 ya',
@@ -57,7 +79,7 @@ document.querySelector(".tombol").addEventListener('click', function () {
                   inputValue: 50
                 }).then((e) => {
                   val = e.value
-                  Swal.fire(`Makasih ya udah sayang sama ${sender} ${val}%`).then(function () {
+                  Swal.fire(`Makasih ya udah mau nerusin ${sender} ${val}%`).then(function () {
                     Swal.fire({
                       title: `Sekarang ${nama} kangen ga sama ${sender}?`,
                       showDenyButton: true,
@@ -68,12 +90,12 @@ document.querySelector(".tombol").addEventListener('click', function () {
                       /* Read more about isConfirmed, isDenied below */
                       if (result.isConfirmed) {
                         Swal.fire(`Huhu iya ${sender} juga kangen ${nama} :((`).then(function () {
-                          Swal.fire('Terakhir deh sayang').then(function () {
+                          Swal.fire('Terakhir deh').then(function () {
                             Swal.fire('Coba klik ikon hati di paling bawah dong')
                           })
                         })
                       } else if (result.isDenied) {
-                        Swal.fire('Jahat banget emang ga kangen sama calon pacar sendiri', '', 'error').then(function () {
+                        Swal.fire('Jahat banget emang ga kangen sama calon suami sendiri', '', 'error').then(function () {
                           Swal.fire('Yaudah deh bye! dek dek jahat banget jadi orang :(')
                         })
                       }
